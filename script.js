@@ -37,14 +37,14 @@ function generateLogFunction() {
     let logId =
       document
         .querySelector("#input_settings-log_log-block-id")
-        .value.indexOf(":") != -1
+        .value.indexOf(":") == -1
         ? "minecraft:" +
           document.querySelector("#input_settings-log_log-block-id").value
         : document.querySelector("#input_settings-log_log-block-id").value;
     let leavesId =
       document
         .querySelector("#input_settings-log_leave-block-id")
-        .value.indexOf(":") != -1
+        .value.indexOf(":") == -1
         ? "minecraft:" +
           document.querySelector("#input_settings-log_leave-block-id").value
         : document.querySelector("#input_settings-log_leave-block-id").value;
@@ -87,7 +87,7 @@ function generateOreFunction() {
     let oreId =
       document
         .querySelector("#input_settings-ore_ore-block-id")
-        .value.indexOf(":") != -1
+        .value.indexOf(":") == -1
         ? "minecraft:" +
           document.querySelector("#input_settings-ore_ore-block-id").value
         : document.querySelector("#input_settings-ore_ore-block-id").value;
