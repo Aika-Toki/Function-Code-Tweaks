@@ -34,12 +34,20 @@ function generateLogFunction() {
     let itemName = document.querySelector(
       "#input_settings-log_item-name"
     ).value;
-    let logId = document.querySelector(
-      "#input_settings-log_log-block-id"
-    ).value;
-    let leavesId = document.querySelector(
-      "#input_settings-log_leave-block-id"
-    ).value;
+    let logId =
+      document
+        .querySelector("#input_settings-log_log-block-id")
+        .value.indexOf(":") != -1
+        ? "minecraft:" +
+          document.querySelector("#input_settings-log_log-block-id").value
+        : document.querySelector("#input_settings-log_log-block-id").value;
+    let leavesId =
+      document
+        .querySelector("#input_settings-log_leave-block-id")
+        .value.indexOf(":") != -1
+        ? "minecraft:" +
+          document.querySelector("#input_settings-log_leave-block-id").value
+        : document.querySelector("#input_settings-log_leave-block-id").value;
     let codeLogTemplate = (_itemName, _logId, _axis) =>
       `execute as @e[type=item,name="--itemName",r=12] at @s if block ~ ~-1 ~ --logId ["pillar_axis":"--axis"] run fill ~ ~-1 ~ ~ ~-1 ~ air destroy\nexecute as @e[type=item,name="--itemName",r=12] at @s if block ~-1 ~ ~-1 --logId ["pillar_axis":"--axis"] run fill ~-1 ~ ~-1 ~-1 ~ ~-1 air destroy\nexecute as @e[type=item,name="--itemName",r=12] at @s if block ~-1 ~ ~ --logId ["pillar_axis":"--axis"] run fill ~-1 ~ ~ ~-1 ~ ~ air destroy\nexecute as @e[type=item,name="--itemName",r=12] at @s if block ~-1 ~ ~1 --logId ["pillar_axis":"--axis"] run fill ~-1 ~ ~1 ~-1 ~ ~1 air destroy\nexecute as @e[type=item,name="--itemName",r=12] at @s if block ~ ~ ~-1 --logId ["pillar_axis":"--axis"] run fill ~ ~ ~-1 ~ ~ ~-1 air destroy\nexecute as @e[type=item,name="--itemName",r=12] at @s if block ~ ~ ~1 --logId ["pillar_axis":"--axis"] run fill ~ ~ ~1 ~ ~ ~1 air destroy\nexecute as @e[type=item,name="--itemName",r=12] at @s if block ~1 ~ ~-1 --logId ["pillar_axis":"--axis"] run fill ~1 ~ ~-1 ~1 ~ ~-1 air destroy\nexecute as @e[type=item,name="--itemName",r=12] at @s if block ~1 ~ ~ --logId ["pillar_axis":"--axis"] run fill ~1 ~ ~ ~1 ~ ~ air destroy\nexecute as @e[type=item,name="--itemName",r=12] at @s if block ~1 ~ ~1 --logId ["pillar_axis":"--axis"] run fill ~1 ~ ~1 ~1 ~ ~1 air destroy\nexecute as @e[type=item,name="--itemName",r=12] at @s if block ~ ~1 ~ --logId ["pillar_axis":"--axis"] run fill ~ ~2 ~ ~ ~1 ~ air destroy`
         .replaceAll("--itemName", _itemName)
@@ -76,9 +84,13 @@ function generateOreFunction() {
     let itemName = document.querySelector(
       "#input_settings-ore_item-name"
     ).value;
-    let oreId = document.querySelector(
-      "#input_settings-ore_ore-block-id"
-    ).value;
+    let oreId =
+      document
+        .querySelector("#input_settings-ore_ore-block-id")
+        .value.indexOf(":") != -1
+        ? "minecraft:" +
+          document.querySelector("#index_settings-ore_ore-block-id").value
+        : document.querySelector("#index_settings-ore_ore-block-id").value;
     let codeOreTemplate = (_itemName, _oreId) =>
       `execute as @e[name="--itemName",r=6] at @s if block ~ ~-1 ~ --oreId run fill ~ ~-1 ~ ~ ~-1 ~ air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~-1 ~ ~-1 --oreId run fill ~-1 ~ ~-1 ~-1 ~ ~-1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~-1 ~ ~ --oreId run fill ~-1 ~ ~ ~-1 ~ ~ air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~-1 ~ ~1 --oreId run fill ~-1 ~ ~1 ~-1 ~ ~1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~ ~ ~-1 --oreId run fill ~ ~ ~-1 ~ ~ ~-1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~ ~ ~1 --oreId run fill ~ ~ ~1 ~ ~ ~1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~1 ~ ~-1 --oreId run fill ~1 ~ ~-1 ~1 ~ ~-1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~1 ~ ~ --oreId run fill ~1 ~ ~ ~1 ~ ~ air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~1 ~ ~1 --oreId run fill ~1 ~ ~1 ~1 ~ ~1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~ ~1 ~ --oreId run fill ~ ~1 ~ ~ ~1 ~ air destroy`
         .replaceAll("--itemName", _itemName)
