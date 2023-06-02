@@ -12,6 +12,9 @@ function foreground(id) {
     case "9b1e2225-646a-7c45-1d31-3a5be0f5602c":
       goTop();
       break;
+    case "f9251d5f-2ae1-cd21-cfb8-66fceef8d755":
+      goBack();
+      break;
     default:
       break;
   }
@@ -122,4 +125,7 @@ function checkedRadio(name) {
 }
 function goTop() {
   screenSwitch("div#type");
+}
+function goBack() {
+  selectType();
 }
