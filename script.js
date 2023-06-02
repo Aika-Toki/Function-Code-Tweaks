@@ -113,13 +113,11 @@ function generateOreFunction() {
 }
 function checkedRadio(name) {
   return Array.from(
-    document.querySelectorAll("input[type=radio][type=item,name=" + name + "]")
+    document.querySelectorAll("input[type=radio][name=" + name + "]")
   ).filter((e) => e.checked).length == 0
     ? undefined
     : Array.from(
-        document.querySelectorAll(
-          "input[type=radio][type=item,name=" + name + "]"
-        )
+        document.querySelectorAll("input[type=radio][name=" + name + "]")
       ).filter((e) => e.checked)[0].value;
 }
 function goTop() {
