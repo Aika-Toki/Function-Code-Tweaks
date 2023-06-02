@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Function Code Tweaks</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/marcelodolza/iziToast/dist/css/iziToast.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/marcelodolza/iziToast/dist/js/iziToast.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/zenorocha/clipboard.js/dist/clipboard.min.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Function Code Tweaks</h1>
+      <hr />
+    </header>
+    <main>
+      <div id="type" class="visible">
+        <h2>Select Type</h2>
+        <div id="radio_type">
+          <div>
+            <input
+              type="radio"
+              id="radio_type_log"
+              name="radio_type"
+              value="log"
+            />
+            <label for="radio_type_log">Log</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="radio_type_ore"
+              name="radio_type"
+              value="ore"
+            />
+            <label for="radio_type_ore">Ore</label>
+          </div>
+        </div>
+        <button onclick="foreground('6d0c1907-0947-f147-6473-d529ac2dbb9a')">
+          Select
+        </button>
+      </div>
+      <div id="settings-log">
+        <h2>Settings : Log</h2>
+        <div>
+          <h3>Item Name</h3>
+          <input
+            type="text"
+            id="input_settings-log_item-name"
+            placeholder="樫の丸太"
+          />
+        </div>
+        <div>
+          <h3>Log Block ID</h3>
+          <input
+            type="text"
+            id="input_settings-log_log-block-id"
+            placeholder="minecraft:oak_log"
+          />
+        </div>
+        <div>
+          <h3>Leave Block ID</h3>
+          <input
+            type="text"
+            id="input_settings-log_leave-block-id"
+            placeholder="minecraft:oak_leaves"
+          />
+        </div>
+        <button onclick="foreground('9abbfe16-4beb-fc41-07fb-f5eb834ad8b6');">
+          Generate
+        </button>
+      </div>
+      <div id="settings-ore">
+        <h2>Settings : Ore</h2>
+        <div>
+          <h3>Item Name</h3>
+          <input
+            type="text"
+            id="input_settings-ore_item-name"
+            placeholder="石炭"
+          />
+        </div>
+        <div>
+          <h3>Ore Block ID</h3>
+          <input
+            type="text"
+            id="input_settings-ore_ore-block-id"
+            placeholder="minecraft:coal_ore"
+          />
+        </div>
+        <button onclick="foreground('801a622e-88e1-f3f5-c604-f131573411af');">
+          Generate
+        </button>
+      </div>
+      <div id="result">
+        <h2>Result</h2>
+        <div>
+          <pre><code id="result-code">Error</code></pre>
+        </div>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+    <script src="./clipboardTweaks.js"></script>
+  </body>
+</html>
