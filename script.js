@@ -89,8 +89,8 @@ function generateOreFunction() {
         .querySelector("#input_settings-ore_ore-block-id")
         .value.indexOf(":") != -1
         ? "minecraft:" +
-          document.querySelector("#index_settings-ore_ore-block-id").value
-        : document.querySelector("#index_settings-ore_ore-block-id").value;
+          document.querySelector("#input_settings-ore_ore-block-id").value
+        : document.querySelector("#input_settings-ore_ore-block-id").value;
     let codeOreTemplate = (_itemName, _oreId) =>
       `execute as @e[name="--itemName",r=6] at @s if block ~ ~-1 ~ --oreId run fill ~ ~-1 ~ ~ ~-1 ~ air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~-1 ~ ~-1 --oreId run fill ~-1 ~ ~-1 ~-1 ~ ~-1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~-1 ~ ~ --oreId run fill ~-1 ~ ~ ~-1 ~ ~ air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~-1 ~ ~1 --oreId run fill ~-1 ~ ~1 ~-1 ~ ~1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~ ~ ~-1 --oreId run fill ~ ~ ~-1 ~ ~ ~-1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~ ~ ~1 --oreId run fill ~ ~ ~1 ~ ~ ~1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~1 ~ ~-1 --oreId run fill ~1 ~ ~-1 ~1 ~ ~-1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~1 ~ ~ --oreId run fill ~1 ~ ~ ~1 ~ ~ air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~1 ~ ~1 --oreId run fill ~1 ~ ~1 ~1 ~ ~1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~ ~1 ~ --oreId run fill ~ ~1 ~ ~ ~1 ~ air destroy`
         .replaceAll("--itemName", _itemName)
