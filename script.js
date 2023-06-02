@@ -9,6 +9,9 @@ function foreground(id) {
     case "801a622e-88e1-f3f5-c604-f131573411af":
       generateOreFunction();
       break;
+    case "9b1e2225-646a-7c45-1d31-3a5be0f5602c":
+      goTop();
+      break;
     default:
       break;
   }
@@ -92,7 +95,7 @@ function generateOreFunction() {
           document.querySelector("#input_settings-ore_ore-block-id").value
         : document.querySelector("#input_settings-ore_ore-block-id").value;
     let codeOreTemplate = (_itemName, _oreId) =>
-      `execute as @e[name="--itemName",r=6] at @s if block ~ ~-1 ~ --oreId run fill ~ ~-1 ~ ~ ~-1 ~ air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~-1 ~ ~-1 --oreId run fill ~-1 ~ ~-1 ~-1 ~ ~-1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~-1 ~ ~ --oreId run fill ~-1 ~ ~ ~-1 ~ ~ air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~-1 ~ ~1 --oreId run fill ~-1 ~ ~1 ~-1 ~ ~1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~ ~ ~-1 --oreId run fill ~ ~ ~-1 ~ ~ ~-1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~ ~ ~1 --oreId run fill ~ ~ ~1 ~ ~ ~1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~1 ~ ~-1 --oreId run fill ~1 ~ ~-1 ~1 ~ ~-1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~1 ~ ~ --oreId run fill ~1 ~ ~ ~1 ~ ~ air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~1 ~ ~1 --oreId run fill ~1 ~ ~1 ~1 ~ ~1 air destroy\nexecute as @e[name="--itemName",r=6] at @s if block ~ ~1 ~ --oreId run fill ~ ~1 ~ ~ ~1 ~ air destroy`
+      `execute as @e[type=item,name="--itemName",r=6] at @s if block ~ ~-1 ~ --oreId run fill ~ ~-1 ~ ~ ~-1 ~ air destroy\nexecute as @e[type=item,name="--itemName",r=6] at @s if block ~-1 ~ ~-1 --oreId run fill ~-1 ~ ~-1 ~-1 ~ ~-1 air destroy\nexecute as @e[type=item,name="--itemName",r=6] at @s if block ~-1 ~ ~ --oreId run fill ~-1 ~ ~ ~-1 ~ ~ air destroy\nexecute as @e[type=item,name="--itemName",r=6] at @s if block ~-1 ~ ~1 --oreId run fill ~-1 ~ ~1 ~-1 ~ ~1 air destroy\nexecute as @e[type=item,name="--itemName",r=6] at @s if block ~ ~ ~-1 --oreId run fill ~ ~ ~-1 ~ ~ ~-1 air destroy\nexecute as @e[type=item,name="--itemName",r=6] at @s if block ~ ~ ~1 --oreId run fill ~ ~ ~1 ~ ~ ~1 air destroy\nexecute as @e[type=item,name="--itemName",r=6] at @s if block ~1 ~ ~-1 --oreId run fill ~1 ~ ~-1 ~1 ~ ~-1 air destroy\nexecute as @e[type=item,name="--itemName",r=6] at @s if block ~1 ~ ~ --oreId run fill ~1 ~ ~ ~1 ~ ~ air destroy\nexecute as @e[type=item,name="--itemName",r=6] at @s if block ~1 ~ ~1 --oreId run fill ~1 ~ ~1 ~1 ~ ~1 air destroy\nexecute as @e[type=item,name="--itemName",r=6] at @s if block ~ ~1 ~ --oreId run fill ~ ~1 ~ ~ ~1 ~ air destroy`
         .replaceAll("--itemName", _itemName)
         .replaceAll("--oreId", _oreId);
     let code = [codeOreTemplate(itemName, oreId)].join("\n\n");
@@ -110,10 +113,15 @@ function generateOreFunction() {
 }
 function checkedRadio(name) {
   return Array.from(
-    document.querySelectorAll("input[type=radio][name=" + name + "]")
+    document.querySelectorAll("input[type=radio][type=item,name=" + name + "]")
   ).filter((e) => e.checked).length == 0
     ? undefined
     : Array.from(
-        document.querySelectorAll("input[type=radio][name=" + name + "]")
+        document.querySelectorAll(
+          "input[type=radio][type=item,name=" + name + "]"
+        )
       ).filter((e) => e.checked)[0].value;
+}
+function goTop() {
+  screenSwitch("div#type");
 }
